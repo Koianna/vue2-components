@@ -1,32 +1,57 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <el-container>
+      <el-aside  width="20vw">
+    <NavMenu :functionData="functionData"/>
+      </el-aside>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+
   </div>
 </template>
+<script>
+import NavMenu from '@/components/NavMenu.vue'
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
+  components: {
+    NavMenu
+  },
+  data () {
+    return {
+      functionData: [
+        {
+          path: '/home',
+          name: 'home',
+          label: '组件一'
+        },
+        {
+          path: '/tree',
+          name: 'tree',
+          label: '组件二'
 
-nav {
-  padding: 30px;
+        },
+        {
+          path: '/video',
+          name: 'video',
+          label: '组件三'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+        },
+        {
+          path: '/some',
+          name: 'some',
+          label: '组件四'
+        }
 
-    &.router-link-exact-active {
-      color: #42b983;
+      ]
     }
   }
+
 }
+</script>
+
+<style lang="scss">
+
 </style>
